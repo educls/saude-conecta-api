@@ -12,12 +12,7 @@ class Database {
                 host: constants.HOST_DB,
                 user: constants.DB_USER,
                 password: constants.DB_PASSWORD,
-                database: constants.DB_DATABASE,
-                port: 5432,
-                ssl: 'require',
-                connection: {
-                    options: `project=ep-lively-king-09029190`,
-                },
+                database: constants.DB_DATABASE
             });
             console.log("Conexão com o banco de dados estabelecida!");
         }catch (err) {
