@@ -1,5 +1,9 @@
 # SaudeConecta API
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/educls/arquivos/main/logo_saude_conecta.png" alt="SaudeConecta Logo">
+</div>
+
 Script SQL
 
 ```mysql
