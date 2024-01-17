@@ -75,6 +75,9 @@ CREATE TABLE Receitas (
 );
 ```
 
+# Requisito - Node.js <br>
+<a href="https://nodejs.org/en/download">Node Download</a>
+
 # Dependencias do Projeto
 
 ## basic-ftp:
