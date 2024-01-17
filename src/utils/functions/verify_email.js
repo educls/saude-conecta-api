@@ -18,7 +18,7 @@ function sendMailVerify(email) {
         from: constants.MAIL_OPTIONS_FROM,
         to: email,
         subject: constants.MAIL_OPTIONS_SUBJECT,
-        text: `${constants.MAIL_OPTIONS_TEXT} \n \n ${codVerify}`,
+        text: `${constants.MAIL_OPTIONS_TEXT_PART1} \n \n ${codVerify} \n \n \n ${constants.MAIL_OPTIONS_TEXT_PART2}`,
     };
 
     return new Promise((resolve, reject) => {

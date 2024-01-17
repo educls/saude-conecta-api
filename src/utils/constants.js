@@ -67,12 +67,21 @@ SQL_DELETE_ATESTADO: "delete from atestados where ID_Atestado = ?",
 
 NODEMAILER_SMTP_HOST: "smtp.gmail.com",
 NODEMAILER_SERVICE: "gmail",
-NODEMAILER_AUTH_USER: "3duardocesar@gmail.com",
-NODEMAILER_AUTH_PASS: "alcu yedz ucbb pegf",
+NODEMAILER_AUTH_USER: "saudeconectasuporte@gmail.com",
+NODEMAILER_AUTH_PASS: "lzun aynt uvlg anxt",
 
-MAIL_OPTIONS_FROM: "3duardocesar@gmail.com",
+MAIL_OPTIONS_FROM: "saudeconectasuporte@gmail.com",
 MAIL_OPTIONS_SUBJECT: "Verificação de E-mail",
-MAIL_OPTIONS_TEXT: "Insira o Codigo de verificação abaixo:",
+
+MAIL_OPTIONS_TEXT_PART1: `Recebemos uma solicitação de recuperação de senha para a sua conta. Para garantir a segurança da sua conta, por favor, siga as instruções abaixo:
+
+Código de Verificação: `,
+
+MAIL_OPTIONS_TEXT_PART2: `Se você não solicitou a recuperação de senha, por favor, ignore este e-mail. Caso contrário, recomendamos que você altere sua senha imediatamente após o acesso à sua conta.
+
+Este código de verificação é válido por 24 horas.
+
+Atenciosamente, SaudeConecta`,
 
 NODEMAILER_ERROR_SEND_MAIL: "Erro ao enviar e-mail de verificação.",
 NODEMAILER_MAIL_SEND: "E-mail de verificação enviado: ",
