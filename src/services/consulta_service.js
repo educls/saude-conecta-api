@@ -11,8 +11,6 @@ exports.agendaConsulta = async (consulta) => {
     const result = await db.query(constants.SQL_INSERT_CONSULTA, [ID_Paciente, ID_Medico, Especialidade, DataConsulta, HoraConsulta, Estado])
     db.close();
 
-    uploadArquivoFTP(`${ID_Paciente}_${result.insertId}`)
-
     if(result){
         return true
     }else {
@@ -24,6 +22,29 @@ exports.listaConsultas = async (id) => {
     await db.connect();
 
     const rows = await db.query(constants.SQL_SELECT_QUERY, [id])
+    await db.close();
+
+    return rows
+}
+
+exports.changeStateConsulta = async (Estado, ID_Consulta) => {
+
+    await db.connect();
+    const rows = await db.query(constants.SQL_UPDATE_STATE_SCHEDULE, [Estado, ID_Consulta])
+
+    await db.close();
+
+    if(rows.affectedRows > 0){
+        return true
+    }else {
+        return false
+    }
+}
+
+exports.getConsultaForMedico = async (idMedico) => {
+    await db.connect();
+
+    const rows = await db.query(constants.SQL_SELECT_QUERYS_FOR_PHYSICIAN, [idMedico])
     await db.close();
 
     return rows

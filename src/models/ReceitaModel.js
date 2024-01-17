@@ -1,5 +1,5 @@
 
-class AtestadoModel {
+class ReceitaModel{
     constructor(ID_Medico, ID_Paciente, DataEmissao, Especialidade){
         this.ID_Medico = ID_Medico;
         this.ID_Paciente = ID_Paciente;
@@ -8,4 +8,4 @@ class AtestadoModel {
     }
 }
 
-module.exports = AtestadoModel;
+module.exports = ReceitaModel;

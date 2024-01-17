@@ -31,6 +31,15 @@ exports.listaMedico = async (id) => {
 
     return rows
 }
+exports.listaMedicos = async () => {
+    await db.connect();
+
+    const rows = await db.query(constants.SQL_SELECT_MEDICOS)
+    console.log(rows)
+    await db.close();
+
+    return rows
+}
 
 exports.deletaMedico = async (id) => {
     await db.connect();

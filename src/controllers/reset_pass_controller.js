@@ -15,7 +15,7 @@ exports.post = async (req, res) => {
         }else{
             const result = await serviceResetPass.resetPasswordUser(req);
             if(result.affectedRows > 0){
-                res.status(200).json(
+                res.status(201).json(
                     {message: constants.PASS_UPDATE_SUCESSFUL}
                 )
             }else{

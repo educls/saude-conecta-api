@@ -7,7 +7,9 @@ router.post('/', medicos_controller.post);
 
 router.get('/get_info', auth_verify, medicos_controller.get);
 
-router.get('/get_whole_infos', medicos_controller.get);
+router.get('/get_whole_infos', medicos_controller.getMed);
+
+router.get('/get_info_by_especialidade', medicos_controller.getByEspecialidade);
 
 router.delete('/delete', auth_verify, medicos_controller.delete);
 

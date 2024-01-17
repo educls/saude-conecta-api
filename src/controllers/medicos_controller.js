@@ -48,6 +48,38 @@ exports.get = async (req, res) => {
     }
 }
 
+exports.getMed = async (req, res) => {
+    try{
+        let medicoInfos = []
+
+        medicoInfos = await serviceMedicos.listaMedicos()
+        if(medicoInfos == undefined){
+            return res.status(401).json(
+                {message: constants.PHYSICIAN_NOT_FOUND}
+            )
+        }
+        res.status(200).json({medicoInfos})
+
+
+    }catch(err){
+        console.log(constants.REGISTER_ERROR, err)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
+exports.getByEspecialidade = async(req, res) => {
+    try{
+
+    }catch(err){
+        console.log(constants.REGISTER_ERROR, err)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
 exports.delete = async (req, res) => {
     try{
 

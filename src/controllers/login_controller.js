@@ -14,7 +14,7 @@ exports.post = async (req, res) => {
 
             const novoLogin = {id: ID_Paciente ,email: Email, password: Senha}
 
-            const token = jwt.sign(novoLogin, constant.SECRET_KEY, { expiresIn: '1h' })
+            const token = jwt.sign(novoLogin, constant.SECRET_KEY, { expiresIn: '12h' })
 
             return res.status(200).json({message: constant.LOGIN_SUCESSFULL, token})
         }else{

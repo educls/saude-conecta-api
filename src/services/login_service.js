@@ -8,9 +8,9 @@ exports.verificaSeEmailUsuarioExistente = async (req) => {
 
     await db.connect();
 
-    const {email} = req.body;
+    const {email, password} = req.body;
 
-    const rows = await db.query(constants.SQL_SELECT_EMAIL_AND_STATUS, [email, 'ativo'])
+    const rows = await db.query(constants.SQL_SELECT_LOGIN, [email, password, 'ativo'])
     await db.close();
 
     return rows

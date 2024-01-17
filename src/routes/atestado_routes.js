@@ -7,6 +7,8 @@ router.post('/', auth_verify, atestado_controller.post)
 
 router.get('/get_info', auth_verify, atestado_controller.get)
 
+router.get('/get_atestado_pdf/:id', auth_verify, atestado_controller.getAtestadoPdf)
+
 router.delete('/:id', auth_verify, atestado_controller.delete)
 
 module.exports = router;

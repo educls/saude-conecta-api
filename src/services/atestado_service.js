@@ -4,14 +4,14 @@ const uploadArquivoFTP = require('../utils/functions/conectionFTPserver')
 
 const db = new Database();
 
-exports.cadastraAtestado = async (atestado) => {
-    const { ID_Medico, ID_Paciente, DataEmissao } = atestado
+exports.cadastraAtestado = async (atestado, arquivo) => {
+    const { ID_Medico, ID_Paciente, DataEmissao, Especialidade } = atestado
 
     await db.connect();
-    const result = await db.query(constants.SQL_INSERT_ATESTADO, [ID_Medico, ID_Paciente, DataEmissao])
+    const result = await db.query(constants.SQL_INSERT_ATESTADO, [ID_Medico, ID_Paciente, DataEmissao, Especialidade])
     db.close();
 
-    uploadArquivoFTP(`${ID_Paciente}_${result.insertId}`)
+    uploadArquivoFTP(`${ID_Paciente}_${result.insertId}_atestado`, arquivo)
 
     if(result){
         return true

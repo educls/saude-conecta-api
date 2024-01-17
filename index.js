@@ -9,7 +9,7 @@ const greenConsoleLog = (message) => {
 
 server.use((req, res, next) => {
     res.on('finish', () => {
-        greenConsoleLog(`Rota: ${req.method} ${req.originalUrl} - Status Code: ${res.statusCode}`);
+        greenConsoleLog(`Rota: ${req.method} ${req.originalUrl} ${req.params} - Status Code: ${res.statusCode}`);
     });
     next();
 });
@@ -24,7 +24,11 @@ server.use('/medicos', require('./src/routes/medico_routes'))
 
 server.use('/consulta-agendar', require('./src/routes/consulta_routes'))
 
+server.use('/get_horarios_disponiveis', require('./src/routes/horario_routes'))
+
 server.use('/atestado-gerar', require('./src/routes/atestado_routes'))
+
+server.use('/receita-gerar', require('./src/routes/receita_routes'))
 
 server.use('/enviar-email-verificacao', require('./src/routes/verify_routes'))
 
