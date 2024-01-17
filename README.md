@@ -85,6 +85,8 @@ CREATE TABLE Receitas (
 
 # Requisito - Node.js <br>
 <a href="https://nodejs.org/en/download">Node Download</a>
+<br>
+### Necessario um servidor FTP para que alguns ENDPOINTS funcione de maneira adequada
 
 # Dependencias do Projeto
 
