@@ -81,6 +81,18 @@ CREATE TABLE Receitas (
     FOREIGN KEY (ID_Medico) REFERENCES Medicos(ID_Medico),
     FOREIGN KEY (ID_Paciente) REFERENCES Usuarios(ID_Paciente)
 );
+
+-- Tabela de Medicamentos
+CREATE TABLE Medicamentos (
+    ID_Medicamento INT AUTO_INCREMENT PRIMARY KEY,
+    Nome_Medicamento VARCHAR(255) NOT NULL,
+    Forma_Farmaceutica VARCHAR(255),
+    Fabricante VARCHAR(255),
+    Data_Fabricacao DATE,
+    Data_Validade DATE NOT NULL,
+    Prescricao_Medica ENUM('sim', 'nao') NOT NULL,
+    Estoque INT NOT NULL
+);
 ```
 
 # Requisito - Node.js <br>
