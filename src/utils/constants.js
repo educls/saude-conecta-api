@@ -30,6 +30,7 @@ DB_PASSWORD: '',
 DB_DATABASE: "aplication1.3",
 SECRET_KEY: "xyz12",
 
+SQL_SELECT_MEDICAMENTOS: "select ID_Medicamento, Nome_Medicamento, Forma_Farmaceutica, Fabricante, Data_Validade, Estoque from medicamentos",
 SQL_SELECT_EMAIL: "select * from usuarios where Email = ?",
 SQL_SELECT_HOURS_AVAILABLE: "select HoraConsulta from consultas where DataConsulta = ? and ID_Medico = ? and Estado = ?",
 SQL_SELECT_COD_USER: "select * from usuarios where Cod_Verificacao = ?",
@@ -48,22 +49,27 @@ SQL_SELECT_QUERYS_FOR_PHYSICIAN: `SELECT c.ID_Consulta, c.ID_Paciente, u.Nome AS
                                     JOIN Medicos m ON c.ID_Medico = m.ID_Medico
                                     WHERE c.ID_Medico = ? AND c.Estado = 'Em Espera'`,
 
-SQL_INSERT_USERS: "insert into usuarios (nome, email, senha, cpf, telefone, status) values (?, ?, ?, ?, ?, ?)",
+SQL_SELECT_LIKE_MEDICAMENTOS: "select * from medicamentos where Nome_Medicamento like ? limit 4;",
+
+
 SQL_UPDATE_COD_USER: "update usuarios set Cod_Verificacao = ? where Email = ?",
 SQL_UPDATE_COD_NULL: "update usuarios set Cod_Verificacao = ? where Cod_Verificacao = ?",
 SQL_UPDATE_PASSWORD_FROM_CODE: "update usuarios set Senha = ? where Cod_Verificacao = ?",
 SQL_UPDATE_STATE_SCHEDULE: "update consultas set Estado = ? where ID_Consulta = ?",
 
+SQL_INSERT_USERS: "insert into usuarios (nome, email, senha, cpf, telefone, status) values (?, ?, ?, ?, ?, ?)",
 SQL_INSERT_ADDRESS: "insert into enderecos (Estado, Cidade, Bairro, Rua, Numero, ID_Paciente) values (?, ?, ?, ?, ?, ?)",
 SQL_INSERT_MEDICO: "insert into medicos (Nome, CPF, Senha, CRM, Especialidade) values (?, ?, ?, ?, ?)",
 SQL_INSERT_CONSULTA: "insert into consultas (ID_Paciente, ID_Medico, Especialidade, DataConsulta, HoraConsulta, Estado) values (?, ?, ?, ?, ?, ?)",
 SQL_INSERT_ATESTADO: "insert into atestados (ID_Medico, ID_Paciente, DataEmissao, Especialidade) values (?, ?, ?, ?)",
-SQL_INSERT_RECEITA: "insert into receitas (ID_Medico, ID_Paciente, DataEmissao, Especialidade) values (?, ?, ?, ?)", 
+SQL_INSERT_RECEITA: "insert into receitas (ID_Medico, ID_Paciente, DataEmissao, Especialidade) values (?, ?, ?, ?)",
+SQL_INSERT_MEDICAMENTO: "insert into medicamentos (Nome_Medicamento, Forma_Farmaceutica, Fabricante, Data_Fabricacao, Data_Validade, Prescricao_Medica, Estoque) values (?, ?, ?, ?, ?, ?, ?)",
 
 SQL_DELETE_USERS: "update usuarios set Status = ? where ID_Paciente = ?",
 SQL_DELETE_PHYSICIAN: "delete from medicos where ID_Medico = ?",
 SQL_DELETE_QUERY: "delete from consultas where ID_consulta = ?",
 SQL_DELETE_ATESTADO: "delete from atestados where ID_Atestado = ?",
+SQL_DELETE_MEDICAMENTO: "delete from medicamentos where ID_Medicamento = ?",
 
 NODEMAILER_SMTP_HOST: "smtp.gmail.com",
 NODEMAILER_SERVICE: "gmail",
@@ -88,4 +94,8 @@ NODEMAILER_MAIL_SEND: "E-mail de verificação enviado: ",
 NODEMAILER_SEND_SUCESSFULL: "E-mail de verificação enviado com sucesso.",
 
 CODE_INCORRECT: "Codigo Invalido"
+
+
+
+
 }

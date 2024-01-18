@@ -34,6 +34,8 @@ server.use('/enviar-email-verificacao', require('./src/routes/verify_routes'))
 
 server.use('/reset_pass_with_code', require('./src/routes/reset_password_from_code'))
 
+server.use('/medicamentos', require('./src/routes/medicanento_routes'))
+
 server.listen(3000, () =>{
     console.log('Servidor está funcionando...')
 })
