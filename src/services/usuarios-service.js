@@ -51,6 +51,16 @@ exports.listaUsuario = async (id) => {
     return rows
 }
 
+exports.listaEndereco = async (id) => {
+
+    await db.connect();
+
+    const [rows] = await db.query(constants.SQL_SELECT_ENDERECO, [id])
+    await db.close();
+
+    return rows;
+}
+
 exports.deletaUsuario = async (id) => {
 
     await db.connect();

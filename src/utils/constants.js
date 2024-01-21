@@ -50,6 +50,7 @@ SQL_SELECT_QUERYS_FOR_PHYSICIAN: `SELECT c.ID_Consulta, c.ID_Paciente, u.Nome AS
                                     WHERE c.ID_Medico = ? AND c.Estado = 'Em Espera'`,
 
 SQL_SELECT_LIKE_MEDICAMENTOS: "select * from medicamentos where Nome_Medicamento like ? limit 4;",
+SQL_SELECT_ENDERECO: "select * from enderecos where ID_Paciente = ?",
 
 
 SQL_UPDATE_COD_USER: "update usuarios set Cod_Verificacao = ? where Email = ?",

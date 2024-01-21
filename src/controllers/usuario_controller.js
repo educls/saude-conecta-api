@@ -62,6 +62,27 @@ exports.get = async (req, res) => {
     }
 }
 
+exports.getEndereco = async (req, res) => {
+    try{
+        let usuarioInfosEndereco = []
+
+        const id_user = req.user.id
+
+        usuarioInfosEndereco = await serviceUsuarios.listaEndereco(id_user)
+
+        if(usuarioInfosEndereco.length <= 0) {
+            return res.status(401).json({message: "Endereço não encontrado"})
+        }
+        res.status(200).json({usuarioInfosEndereco})
+
+    }catch(err){
+        console.log(constants.REGISTER_ERROR, err)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
 exports.delete = async (req, res) => {
     try{
         const id_user = req.user.id
