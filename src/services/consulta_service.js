@@ -18,15 +18,6 @@ exports.agendaConsulta = async (consulta) => {
     }
 }
 
-exports.listaConsultas = async (id) => {
-    await db.connect();
-
-    const rows = await db.query(constants.SQL_SELECT_QUERY, [id])
-    await db.close();
-
-    return rows
-}
-
 exports.changeStateConsulta = async (Estado, ID_Consulta) => {
 
     await db.connect();
@@ -39,6 +30,15 @@ exports.changeStateConsulta = async (Estado, ID_Consulta) => {
     }else {
         return false
     }
+}
+
+exports.listaConsultas = async (id) => {
+    await db.connect();
+
+    const rows = await db.query(constants.SQL_SELECT_QUERY, [id])
+    await db.close();
+
+    return rows
 }
 
 exports.getConsultaForMedico = async (idMedico) => {

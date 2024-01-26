@@ -11,7 +11,7 @@ exports.post = async (req, res) => {
         if(rows.length > 0){
             const { ID_Medico, Nome, CRM, Especialidade } = rows[0]
 
-            const novoLogin = {id: ID_Medico, nome: Nome, crm: CRM, especialidade: Especialidade}
+            const novoLogin = {id: ID_Medico, role: "medico", nome: Nome, crm: CRM, especialidade: Especialidade}
 
             const token = jwt.sign(novoLogin, constant.SECRET_KEY, {expiresIn: '1h'})
 

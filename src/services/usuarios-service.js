@@ -61,6 +61,22 @@ exports.listaEndereco = async (id) => {
     return rows;
 }
 
+exports.atualizaCadastro = async(update) => {
+    const { IdUsuario, Senha, Telefone, Endereco } = update
+
+    await db.connect();
+    const rowsUser = await db.query(constants.SQL_UPDATE_USER, [Senha, Telefone, IdUsuario])
+    const rowsAdress = await db.query(constants.SQL_UPDATE_ADRESS, [Endereco.estado, Endereco.cidade, Endereco.bairro, Endereco.rua, Endereco.numero, IdUsuario])
+
+    db.close();
+
+    if(rowsUser.affectedRows > 0 || rowsAdress.affectedRows > 0){
+        return true
+    }else {
+        return false
+    }
+}
+
 exports.deletaUsuario = async (id) => {
 
     await db.connect();

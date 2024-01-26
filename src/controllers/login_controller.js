@@ -10,9 +10,9 @@ exports.post = async (req, res) => {
         const rows = await serviceLogin.verificaSeEmailUsuarioExistente(req)
         if(rows.length > 0) {
 
-            const { Email, Senha, ID_Paciente } = rows[0]
+            const { Email, Senha, ID_Paciente, Nome } = rows[0]
 
-            const novoLogin = {id: ID_Paciente ,email: Email, password: Senha}
+            const novoLogin = {id: ID_Paciente, nome: Nome, role: 'paciente' ,email: Email, password: Senha}
 
             const token = jwt.sign(novoLogin, constant.SECRET_KEY, { expiresIn: '12h' })
 

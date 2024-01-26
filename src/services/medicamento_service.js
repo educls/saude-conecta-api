@@ -24,6 +24,25 @@ exports.listaMedicamentos = async () => {
     return result;
 }
 
+exports.listaMedicamento = async (search) => {
+
+    await db.connect();
+    const result = await db.query(constants.SQL_SELECT_MEDICAMENTO, [search]);
+    
+    db.close();
+
+    return result;
+}
+
+exports.atualizaMedicamento = async (ID_Medicamento, Estoque) => {
+    await db.connect();
+    const result = await db.query(constants.SQL_UPDATE_MEDICAMENTO, [Estoque, ID_Medicamento]);
+
+    db.close();
+
+    return result;
+}
+
 exports.listaMedicamentosLike = async (search) => {
 
     await db.connect();

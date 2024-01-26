@@ -63,7 +63,59 @@ exports.getLike = async (req, res) => {
                 {message: "Nenhum Medicamento Encontrado"}
             )
         }
+
+        let searchMedicamentos = medicamentos.map(medicamento => medicamento['Nome_Medicamento']);
+        searchMedicamentos = Array.from(searchMedicamentos);
+        console.log(searchMedicamentos);
+
+        res.status(200).json({searchMedicamentos})
+
+    }catch(err){
+        console.log(constants.REGISTER_ERROR, err)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
+exports.getInfo = async (req, res) => {
+    try{
+        let medicamentos = []
+        const nome = req.params.nome;
+
+        medicamentos = await medicamento_service.listaMedicamento(nome);
+
+        if(medicamentos == undefined){
+            return res.status(401).json(
+                {message: "Nenhum Medicamento Encontrado"}
+            )
+        }
         res.status(200).json({medicamentos})
+
+    }catch(err){
+        console.log(constants.REGISTER_ERROR, err)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
+exports.put = async (req, res) => {
+    console.log(req.body)
+    try{
+        const { ID_Medicamento, Estoque } = req.body
+
+        const resultado = await medicamento_service.atualizaMedicamento(ID_Medicamento, Estoque);
+
+        if(resultado.affectedRows > 0){
+            res.status(201).json(
+                {
+                    message: 'Cadastro Atualizado'
+                }
+            )
+        }else{
+            res.status(401).json({message: 'Cadastro Não Encontrado'})
+        }
 
     }catch(err){
         console.log(constants.REGISTER_ERROR, err)

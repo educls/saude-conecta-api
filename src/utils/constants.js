@@ -28,9 +28,10 @@ HOST_DB: "localhost",
 DB_USER: "root",
 DB_PASSWORD: '',
 DB_DATABASE: "aplication1.3",
+DB_DATABASE_CHAT: "chat",
 SECRET_KEY: "xyz12",
 
-SQL_SELECT_MEDICAMENTOS: "select ID_Medicamento, Nome_Medicamento, Forma_Farmaceutica, Fabricante, Data_Validade, Estoque from medicamentos",
+SQL_SELECT_MEDICAMENTOS: "select * from medicamentos",
 SQL_SELECT_EMAIL: "select * from usuarios where Email = ?",
 SQL_SELECT_HOURS_AVAILABLE: "select HoraConsulta from consultas where DataConsulta = ? and ID_Medico = ? and Estado = ?",
 SQL_SELECT_COD_USER: "select * from usuarios where Cod_Verificacao = ?",
@@ -39,17 +40,21 @@ SQL_SELECT_ID_MEDICO: "select * from medicos where ID_Medico = ?",
 SQL_SELECT_ESPECIALIDADE_MEDICO: "select * from medicos where Especialidade = ?",
 SQL_SELECT_LOGIN: "select * from usuarios where Email = ? and Senha = ? and Status = ?",
 SQL_SELECT_CRM_PHYSICIAN: "select * from medicos where CRM = ?",
-SQL_SELECT_QUERY: "select * from consultas where ID_Paciente = ?",
 SQL_SELECT_ATESTADO: "select * from atestados where ID_Paciente = ?",
 SQL_SELECT_RECEITA: "select * from receitas where ID_Paciente = ?",
 SQL_SELECT_MEDICOS: "SELECT ID_Medico, Nome, Especialidade FROM medicos",
+SQL_SELECT_QUERY: `SELECT c.ID_Consulta, c.ID_Paciente, u.Nome AS NomePaciente, c.ID_Medico, m.Nome AS NomeMedico, c.Especialidade, c.DataConsulta, c.HoraConsulta, c.Estado
+                    FROM Consultas c
+                    JOIN Usuarios u ON c.ID_Paciente = u.ID_Paciente
+                    JOIN Medicos m ON c.ID_Medico = m.ID_Medico
+                    WHERE c.ID_Paciente = ?`,
 SQL_SELECT_QUERYS_FOR_PHYSICIAN: `SELECT c.ID_Consulta, c.ID_Paciente, u.Nome AS NomePaciente, c.ID_Medico, m.Nome AS NomeMedico, c.Especialidade, c.DataConsulta, c.HoraConsulta, c.Estado
                                     FROM Consultas c
                                     JOIN Usuarios u ON c.ID_Paciente = u.ID_Paciente
                                     JOIN Medicos m ON c.ID_Medico = m.ID_Medico
                                     WHERE c.ID_Medico = ? AND c.Estado = 'Em Espera'`,
-
-SQL_SELECT_LIKE_MEDICAMENTOS: "select * from medicamentos where Nome_Medicamento like ? limit 4;",
+SQL_SELECT_LIKE_MEDICAMENTOS: "select Nome_Medicamento from medicamentos where Nome_Medicamento like ? limit 4;",
+SQL_SELECT_MEDICAMENTO: "select * from medicamentos where Nome_Medicamento = ?",
 SQL_SELECT_ENDERECO: "select * from enderecos where ID_Paciente = ?",
 
 
@@ -57,6 +62,9 @@ SQL_UPDATE_COD_USER: "update usuarios set Cod_Verificacao = ? where Email = ?",
 SQL_UPDATE_COD_NULL: "update usuarios set Cod_Verificacao = ? where Cod_Verificacao = ?",
 SQL_UPDATE_PASSWORD_FROM_CODE: "update usuarios set Senha = ? where Cod_Verificacao = ?",
 SQL_UPDATE_STATE_SCHEDULE: "update consultas set Estado = ? where ID_Consulta = ?",
+SQL_UPDATE_USER: "update usuarios set Senha = ?, Telefone = ? where ID_Paciente = ?",
+SQL_UPDATE_ADRESS: "update enderecos set Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where ID_Paciente = ?",
+SQL_UPDATE_MEDICAMENTO: "update medicamentos set Estoque = ? where ID_Medicamento = ?",
 
 SQL_INSERT_USERS: "insert into usuarios (nome, email, senha, cpf, telefone, status) values (?, ?, ?, ?, ?, ?)",
 SQL_INSERT_ADDRESS: "insert into enderecos (Estado, Cidade, Bairro, Rua, Numero, ID_Paciente) values (?, ?, ?, ?, ?, ?)",

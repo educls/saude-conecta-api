@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const serviceUsuarios = require('../services/usuarios-service')
 const UsuarioModel = require('../models/UsuarioModel')
+const UpdateUserModel = require('../models/UpdateUserModel')
 const geraID = require('../utils/functions/gera_id');
 const constants = require('../utils/constants');
 
@@ -74,6 +75,36 @@ exports.getEndereco = async (req, res) => {
             return res.status(401).json({message: "Endereço não encontrado"})
         }
         res.status(200).json({usuarioInfosEndereco})
+
+    }catch(err){
+        console.log(constants.REGISTER_ERROR, err)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
+exports.put = async (req, res) => {
+    try{
+        const id = req.user.id
+        const { Senha, Telefone } = req.body
+
+        const { estado, cidade, bairro, rua, numero } = req.body.Endereco;
+        const Endereco = { estado, cidade, bairro, rua, numero };
+
+        const novoUpdateUser = new UpdateUserModel(id, Senha, Telefone, Endereco)
+
+        const resultado = await serviceUsuarios.atualizaCadastro(novoUpdateUser);
+
+        if(resultado == true){
+            res.status(201).json(
+                {
+                    message: 'Cadastro Atualizado'
+                }
+            )
+        }else if(resultado == false) {
+            res.status(401).json({message: 'Cadastro Não Encontrado'})
+        }
 
     }catch(err){
         console.log(constants.REGISTER_ERROR, err)
