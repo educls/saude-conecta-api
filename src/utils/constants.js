@@ -24,10 +24,10 @@ module.exports = {
     SOME_FIELDS_NULL: "Um ou mais campos obrigatorios estao nulos",
     TOKEN_EMPTY: "ID medico nulo",
     
-    HOST_DB: "localhost",
-    DB_USER: "root",
-    DB_PASSWORD: '',
-    DB_DATABASE: "aplication1.3",
+    HOST_DB: "database-saude-conecta.cvgqig6u447x.us-east-1.rds.amazonaws.com",
+    DB_USER: "admin",
+    DB_PASSWORD: '12345678',
+    DB_DATABASE: "saudeconectadb",
     DB_DATABASE_CHAT: "chat",
     SECRET_KEY: "xyz12",
     
