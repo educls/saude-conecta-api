@@ -27,7 +27,7 @@ TOKEN_EMPTY: "ID medico nulo",
 HOST_DB: "database-saude-conecta.cvgqig6u447x.us-east-1.rds.amazonaws.com",
 DB_USER: "admin",
 DB_PASSWORD: '12345678',
-DB_DATABASE: "aplication1.3",
+DB_DATABASE: "database-saude-conecta",
 DB_DATABASE_CHAT: "chat",
 SECRET_KEY: "xyz12",
 
