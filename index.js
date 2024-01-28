@@ -28,6 +28,9 @@ app.use((req, res, next) => {
 });
 
 
+app.get('/', (req, res) => {
+    res.send('Endpoint (). Teste bem-sucedido!');
+});
 
 
 app.use('/usuarios', require('./src/routes/usuario_routes'))
@@ -113,7 +116,7 @@ io.on('connection', async (socket) => {
 
         const agoraEmSaoPaulo = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
         const dataAgr = new Date(agoraEmSaoPaulo);
-        
+
         const horas = dataAgr.getHours();
         const minutos = dataAgr.getMinutes();
 
