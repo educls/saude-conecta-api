@@ -24,7 +24,7 @@ RECEITA_NOT_FOUND: "Receita não Encontrada",
 SOME_FIELDS_NULL: "Um ou mais campos obrigatorios estao nulos",
 TOKEN_EMPTY: "ID medico nulo",
 
-HOST_DB: "database-saude-conecta.cvgqig6u447x.us-east-1.rds.amazonaws.com:3306",
+HOST_DB: "database-saude-conecta.cvgqig6u447x.us-east-1.rds.amazonaws.com",
 DB_USER: "admin",
 DB_PASSWORD: '12345678',
 DB_DATABASE: "aplication1.3",
