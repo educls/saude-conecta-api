@@ -11,8 +11,7 @@ class Database {
             this.connection = await mysql.createConnection({
                 host: constants.HOST_DB,
                 user: constants.DB_USER,
-                password: constants.DB_PASSWORD,
-                database: constants.DB_DATABASE
+                password: constants.DB_PASSWORD
             });
             console.log("Conexão com o banco de dados estabelecida!");
         }catch (err) {
