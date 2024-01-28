@@ -8,11 +8,14 @@ const constant = require('../utils/constants')
 exports.post = async (req, res) => {
     try{
         const rows = await serviceLogin.verificaSeEmailUsuarioExistente(req)
+        console.log(rows)
+        console.log(rows[0])
         if(rows.length > 0) {
 
             const { Email, Senha, ID_Paciente, Nome } = rows[0]
 
             const novoLogin = {id: ID_Paciente, nome: Nome, role: 'paciente' ,email: Email, password: Senha}
+            console.log(novoLogin)
 
             const token = jwt.sign(novoLogin, constant.SECRET_KEY, { expiresIn: '12h' })
 
