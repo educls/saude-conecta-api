@@ -9,7 +9,6 @@ const db = new Database();
 exports.verificaSeEmailUsuarioExistente = async (req) => {
 
     await db.connect();
-    const connection = db.getConnection();
 
     const {Email} = req.body;
 
