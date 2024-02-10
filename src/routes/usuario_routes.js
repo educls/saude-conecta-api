@@ -5,6 +5,8 @@ const auth_verify = require('../middleware/auth_verify')
 
 router.post('/', usuario_controller.post);
 
+router.post('/set_token_firebase', auth_verify, usuario_controller.postTokenFirebase)
+
 router.get('/get_info', auth_verify, usuario_controller.get);
 
 router.get('/get_info_endereco', auth_verify, usuario_controller.getEndereco);

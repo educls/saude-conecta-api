@@ -9,6 +9,7 @@ const db = new Database();
 exports.verificaSeEmailUsuarioExistente = async (req) => {
 
     await db.connect();
+    const connection = db.getConnection();
 
     const {Email} = req.body;
 
@@ -38,6 +39,16 @@ exports.cadastraUsuario = async (usuario) => {
     }else {
         return false
     }
+}
+
+exports.setTokenFirebase = async (tokenFirebase, id) => {
+
+    await db.connect();
+
+    const rows = await db.query(constants.SQL_UPDATE_USER_SET_TOKEN_FIREBASE, [tokenFirebase, id])
+    await db.close();
+
+    return rows
 }
 
 exports.listaUsuario = async (id) => {

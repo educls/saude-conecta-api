@@ -57,6 +57,8 @@ app.use('/medicamentos', require('./src/routes/medicanento_routes'))
 
 app.use('/mensagens', require('./src/routes/chat_routes'))
 
+app.use('/send_notification', require('./src/routes/send_notification_routes'))
+
 app.use((req, res, next) => {
     console.log('Solicitação não tratada:', req.method, req.url);
     res.status(404).send('404 Not Found');
@@ -119,6 +121,7 @@ io.on('connection', async (socket) => {
 
         const horas = dataAgr.getHours();
         const minutos = dataAgr.getMinutes();
+        console.log(`${horas}:${minutos}`)
 
         let novaMessage = new ChatModel(data.idChat, data.text, socket.id, data.receiver, `${horas}:${minutos}`)
         chatService.cadastraMensagem(novaMessage)

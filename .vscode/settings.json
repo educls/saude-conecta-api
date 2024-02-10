@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "database-saude-conecta.cvgqig6u447x.us-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "database-saude-conecta",
+            "username": "admin",
+            "password": "12345678",
+            "database": "database-saude-conecta"
+        }
+    ]
+}

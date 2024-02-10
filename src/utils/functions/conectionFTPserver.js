@@ -36,7 +36,7 @@ function uploadArquivoFTPComImagem(nome_arquivo, texto) {
 
             const ftp = new Ftp();
             ftp.connect({
-              host: '192.168.1.23',
+              host: '192.168.86.11',
               user: 'api',
               password: '1234'
             });

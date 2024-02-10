@@ -12,7 +12,7 @@ class Database {
                 host: constants.HOST_DB,
                 user: constants.DB_USER,
                 password: constants.DB_PASSWORD,
-                database: constants.DB_DATABASE,
+                database: constants.DB_DATABASE_CHAT,
                 waitForConnections: true,
                 connectionLimit: 10,
                 queueLimit: 0
