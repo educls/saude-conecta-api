@@ -107,7 +107,7 @@ NODEMAILER_SEND_SUCESSFULL: "E-mail de verificação enviado com sucesso.",
 
 CODE_INCORRECT: "Codigo Invalido",
 
-PATH_FOR_KEY_FIREBASE: "../utils/chave_firebase/saudeconecta-58247-firebase-adminsdk-iv9ji-d90b7a1a8a.json",
+PATH_FOR_KEY_FIREBASE: "../utils/chave_firebase/saudeconecta-58247-firebase-adminsdk-iv9ji-d0a579a3d3.json",
 NOTIFICATION_SEND: "Notificação enviada com sucesso: ",
 NOTIFICATION_NOT_SEND: "Notificação enviada com sucesso",
 
