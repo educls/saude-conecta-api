@@ -21,8 +21,10 @@ CREATE TABLE Usuarios (
     CPF VARCHAR(15),
     Telefone VARCHAR(20),
     Status VARCHAR(20),
-    Cod_Verificacao VARCHAR(30)
+    Cod_Verificacao VARCHAR(30),
+    TokenFireBase VARCHAR(255)
 );
+
 
 -- Tabela Enderecos
 CREATE TABLE Enderecos (
@@ -36,6 +38,7 @@ CREATE TABLE Enderecos (
     FOREIGN KEY (ID_Paciente) REFERENCES Usuarios(ID_Paciente)
 );
 
+
 -- Tabela de Medicos
 CREATE TABLE Medicos (
     ID_Medico INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,7 +46,8 @@ CREATE TABLE Medicos (
     CPF VARCHAR(15),
     Senha VARCHAR(255),
     CRM VARCHAR(20),
-    Especialidade VARCHAR(255)
+    Especialidade VARCHAR(255),
+    TokenFireBase VARCHAR(255)
     -- AssinaturaDigital BLOB
 );
 
@@ -59,6 +63,7 @@ CREATE TABLE Consultas (
     FOREIGN KEY (ID_Paciente) REFERENCES Usuarios(ID_Paciente),
     FOREIGN KEY (ID_Medico) REFERENCES Medicos(ID_Medico)
 );
+
 
 -- Tabela de Atestados
 CREATE TABLE Atestados (
@@ -82,6 +87,7 @@ CREATE TABLE Receitas (
     FOREIGN KEY (ID_Paciente) REFERENCES Usuarios(ID_Paciente)
 );
 
+
 -- Tabela de Medicamentos
 CREATE TABLE Medicamentos (
     ID_Medicamento INT AUTO_INCREMENT PRIMARY KEY,
@@ -92,6 +98,15 @@ CREATE TABLE Medicamentos (
     Data_Validade DATE NOT NULL,
     Prescricao_Medica ENUM('sim', 'nao') NOT NULL,
     Estoque INT NOT NULL
+);
+
+-- Tabela de Mensagens
+CREATE TABLE mensagens(
+    ID_Mensagem VARCHAR(255),
+    Conteudo VARCHAR(255),
+    Sender VARCHAR(255),
+    Receiver VARCHAR(255),
+    Time_Message VARCHAR(255)
 );
 ```
 
