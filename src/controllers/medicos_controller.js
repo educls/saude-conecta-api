@@ -25,6 +25,27 @@ exports.post = async (req, res) => {
     }
 };
 
+exports.postTokenFirebase = async (req, res) => {
+    try{
+
+        const id_user = req.user.id
+        const tokenFirebase = req.body.TokenFirebase
+
+        const result = await serviceMedicos.setTokenFirebase(tokenFirebase, id_user)
+
+        if(!result) {
+            return res.status(401).json({message: constants.TOKEN_FIREBASE_NOT_SET})
+        }
+        res.status(201).json({message: constants.TOKEN_FIREBASE_SET})
+
+    }catch(error){
+        console.log(constants.REGISTER_ERROR, error)
+        res.status(500).json(
+            {message: constants.SERVER_ERROR}
+        );
+    }
+}
+
 exports.get = async (req, res) => {
     try{
         let medicoInfos = []

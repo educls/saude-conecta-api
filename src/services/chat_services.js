@@ -1,5 +1,5 @@
 const constants = require('../utils/constants')
-const Database = require('../data/databaseChat')
+const Database = require('../data/database')
 
 const db = new Database();
 

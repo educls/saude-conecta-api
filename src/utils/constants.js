@@ -44,8 +44,8 @@ SQL_SELECT_LOGIN: "select * from usuarios where Email = ? and Senha = ? and Stat
 SQL_SELECT_CRM_PHYSICIAN: "select * from medicos where CRM = ?",
 SQL_SELECT_ATESTADO: "select * from atestados where ID_Paciente = ?",
 SQL_SELECT_RECEITA: "select * from receitas where ID_Paciente = ?",
-SQL_SELECT_MEDICOS: "SELECT ID_Medico, Nome, Especialidade FROM medicos",
-SQL_SELECT_QUERY: `SELECT c.ID_Consulta, c.ID_Paciente, u.Nome AS NomePaciente, c.ID_Medico, m.Nome AS NomeMedico, c.Especialidade, c.DataConsulta, c.HoraConsulta, c.Estado
+SQL_SELECT_MEDICOS: "SELECT ID_Medico, Nome, Especialidade, TokenFireBase FROM medicos",
+SQL_SELECT_QUERY: `SELECT c.ID_Consulta, c.ID_Paciente, u.Nome AS NomePaciente, c.ID_Medico, m.Nome AS NomeMedico, c.Especialidade, c.DataConsulta, c.HoraConsulta, c.Estado, m.TokenFireBase
                     FROM consultas c
                     JOIN usuarios u ON c.ID_Paciente = u.ID_Paciente
                     JOIN medicos m ON c.ID_Medico = m.ID_Medico
@@ -68,6 +68,7 @@ SQL_UPDATE_USER: "update usuarios set Senha = ?, Telefone = ? where ID_Paciente 
 SQL_UPDATE_ADRESS: "update enderecos set Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where ID_Paciente = ?",
 SQL_UPDATE_MEDICAMENTO: "update medicamentos set Estoque = ? where ID_Medicamento = ?",
 SQL_UPDATE_USER_SET_TOKEN_FIREBASE: "update usuarios set TokenFireBase = ? where ID_Paciente = ?",
+SQL_UPDATE_PHYSICIAN_SET_TOKEN_FIREBASE: "update medicos set TokenFireBase = ? where ID_Medico = ?",
 
 SQL_INSERT_USERS: "insert into usuarios (nome, email, senha, cpf, telefone, status) values (?, ?, ?, ?, ?, ?)",
 SQL_INSERT_ADDRESS: "insert into enderecos (Estado, Cidade, Bairro, Rua, Numero, ID_Paciente) values (?, ?, ?, ?, ?, ?)",

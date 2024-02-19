@@ -23,6 +23,16 @@ exports.cadastraMedico = async (medico) => {
     }
 }
 
+exports.setTokenFirebase = async (tokenFirebase, id) => {
+
+    await db.connect();
+
+    const rows = await db.query(constants.SQL_UPDATE_PHYSICIAN_SET_TOKEN_FIREBASE, [tokenFirebase, id])
+    await db.close();
+
+    return rows
+}
+
 exports.listaMedico = async (id) => {
     await db.connect();
 
